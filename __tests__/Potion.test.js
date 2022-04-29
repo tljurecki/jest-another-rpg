@@ -14,3 +14,13 @@ test('creates a random potion object', () => {
     expect(potion.name.length).toBeGreaterThan(0);
     expect(potion.value).toEqual(expect.any(Number));
 });
+
+test('uses a potion from inventory', ()=> {
+    const player = new Player ('Dave');
+    player.inventory = [new Potion(), new Potion(), new Potion()];
+    const oldCount = player.inventory.length;
+
+    player.userPotion(1);
+
+    expect(player.inventory.length).toBeLessThan(oldCount);
+});
